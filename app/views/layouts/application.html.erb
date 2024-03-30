@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TodoListApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class='row'>
+        <div class='col-lg-10 mx-auto'>
+          <div class='card'>
+            <div class="card-header">
+              <%= render "layouts/navbar" %>  
+            </div>
+            <div class="card-body" style="min-height:750px">
+              <% if @current_user %>
+                <div class="row mx-auto justify-content-around">
+                  <div class="col-lg-2">
+                    <%= render "layouts/sidebar" %>
+                  </div>
+                  <div class="col-lg-10">
+                    <%= yield %>
+                  </div>
+                </div>
+              <% else %>
+                <%= yield %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
